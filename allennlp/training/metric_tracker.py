@@ -101,7 +101,7 @@ class MetricTracker:
         new_best = ((self._best_so_far is None) or
                     (self._should_decrease and metric < self._best_so_far) or
                     (not self._should_decrease and metric > self._best_so_far))
-
+        print("This metric and old ", metric, self._best_so_far)
         if new_best:
             self.best_epoch = self._epoch_number
             self._is_best_so_far = True
@@ -129,6 +129,7 @@ class MetricTracker:
         """
         Returns true if improvement has stopped for long enough.
         """
+        print("Patience ", self._patience, " Improvement ", self._epochs_with_no_improvement)
         if self._patience is None:
             return False
         else:
