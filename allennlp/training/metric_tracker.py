@@ -60,6 +60,7 @@ class MetricTracker:
         """
         Clears out the tracked metrics, but keeps the patience and should_decrease settings.
         """
+        print("Clearning the metric tracket ", self._epochs_with_no_improvement)
         self._best_so_far = None
         self._epochs_with_no_improvement = 0
         self._is_best_so_far = True
@@ -101,7 +102,7 @@ class MetricTracker:
         new_best = ((self._best_so_far is None) or
                     (self._should_decrease and metric < self._best_so_far) or
                     (not self._should_decrease and metric > self._best_so_far))
-        print("This metric and old ", metric, self._best_so_far)
+        print("This metric and old ", metric, " OLD ", self._best_so_far, " epochs without ", self._epochs_with_no_improvement, self._epochs_with_no_improvement)
         if new_best:
             self.best_epoch = self._epoch_number
             self._is_best_so_far = True

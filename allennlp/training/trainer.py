@@ -451,7 +451,7 @@ class Trainer(TrainerBase):
         Trains the supplied model with the supplied parameters.
         """
         try:
-            epoch_counter = self._restore_checkpoint()
+            epoch_counter = 0
         except RuntimeError:
             traceback.print_exc()
             raise ConfigurationError("Could not recover training from the checkpoint.  Did you mean to output to "
